@@ -1,6 +1,7 @@
 fun main(){
     println("You are stuck in a tower, the only way to escape is by going up...")
     challengeOne()
+    challengeTwo()
 }
 
 fun gameOver(){
@@ -12,8 +13,12 @@ fun succes(){
     return println("You may proceed to the next floor")
 }
 
+fun floorCount(i:String){
+    return println("floor $i")
+}
+
 fun challengeOne(){
-    println("Floor 1")
+    floorCount("1")
     println("Solve this riddle to proceed: Feed me and I will live, give me a drink and I will die. What am I?")
 
     var answer = readLine()
@@ -24,4 +29,14 @@ fun challengeOne(){
             gameOver()
         }
     }
+}
+
+
+fun challengeTwo (){
+    floorCount("2")
+    println("Guess what number the dice will fall on, and you may pass.")
+
+    var answer = readline()
+
+    when(answer){}
 }
