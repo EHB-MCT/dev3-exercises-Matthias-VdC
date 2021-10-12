@@ -17,7 +17,7 @@ fun floorCount(i:String){
 }
 
 fun diceRoll():Int{
-    return (0..6).random()
+    return (1..6).random()
 }
 
 fun challengeOne(){
@@ -92,4 +92,31 @@ fun challengeThree(){
             challengeFour()
         }
     }
+}
+
+fun challengeFour(){
+    floorCount("4")
+    println("Guess the number between 1-100.")
+    val randomNumber = (0..100).random()
+    var answer = readLine()?.toInt()
+
+    while(answer != randomNumber){
+        if (answer != null) {
+            if(answer < randomNumber){
+                println("Your chosen number is lower than the desired number.")
+                answer = readLine()?.toInt()
+            }else{
+                println("Your chosen number is higher than the desired number.")
+                answer = readLine()?.toInt()
+            }
+        }
+    }
+    if(answer == randomNumber){
+        succes()
+        challengeFive()
+    }
+}
+
+fun challengeFive(){
+
 }
