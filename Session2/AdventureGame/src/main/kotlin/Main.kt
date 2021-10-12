@@ -17,6 +17,10 @@ fun floorCount(i:String){
     return println("floor $i")
 }
 
+fun diceRoll():Int{
+    return (0..6).random()
+}
+
 fun challengeOne(){
     floorCount("1")
     println("Solve this riddle to proceed: Feed me and I will live, give me a drink and I will die. What am I?")
@@ -36,7 +40,20 @@ fun challengeTwo (){
     floorCount("2")
     println("Guess what number the dice will fall on, and you may pass.")
 
-    var answer = readline()
+    val answer = readLine()
+    val roll = diceRoll()
 
-    when(answer){}
+    println("The dice has fallen on $roll")
+    when(answer) {
+        "1", "2", "3" -> if (roll == 1 || roll == 2 || roll == 3) {
+            succes()
+        } else {
+            gameOver()
+        }
+        else -> if (roll == 4 || roll == 5 || roll == 6) {
+            succes()
+        } else {
+            gameOver()
+        }
+    }
 }
