@@ -1,4 +1,4 @@
-class Chatbot(val name: String?) :ChatPartner {
+class Chatbot(private val name: String?) :ChatPartner {
     override fun talk(){
         println("Beep Boop!")
     }
