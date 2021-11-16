@@ -1,0 +1,15 @@
+SELECT count(*) FROM orders WHERE customerNumber="328"
+Answer="3"
+
+
+SELECT COUNT(orders.customerNumber) AS numberOfOrders FROM orders
+INNER JOIN customers ON customers.customerNumber = orders.customerNumber WHERE contactFirstName="Julie" AND contactLastName="Young" HAVING COUNT(orders.orderNumber)
+Answer="3"
+
+
+SELECT count(*)  AS noCreditLeft FROM customers WHERE customers.creditLimit="0" AND customers.country="USA"
+Answer="1"
+
+
+SELECT * ,avg(payments.amount) as biggestBaller FROM payments INNER JOIN customers ON customers.customerNumber = payments.customerNumber GROUP BY payments.customerNumber ORDER BY biggestBaller DESC LIMIT 1
+Answer="Valarie Thompson"
