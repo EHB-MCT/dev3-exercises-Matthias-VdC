@@ -1,0 +1,6 @@
+BATCH 3
+SELECT SUM(payments.amount) AS total FROM payments INNER JOIN customers ON customers.customerNumber = payments.customerNumber WHERE customers.contactFirstName="William" AND customers.contactLastName="Brown" AND payments.paymentDate LIKE "2004%"
+Answer="38281.51"
+
+SELECT customers.customerName, employees.firstName, employees.lastName FROM employees INNER JOIN customers ON customers.salesRepEmployeeNumber = employees.reportsTo IS NOT NULL
+Answer=""
