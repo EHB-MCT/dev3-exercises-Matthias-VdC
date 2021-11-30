@@ -1,3 +1,6 @@
-
-*.xml
-Session1/Hello world/.idea/runConfigurations.xml
+**.xml
+**.iml
+**/out
+**/.idea
+.iml
+/Duolingo\Duolingo.iml
