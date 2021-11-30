@@ -1,6 +1,4 @@
 **.xml
 **.iml
-**/out
+**/.out
 **/.idea
-.iml
-/Duolingo\Duolingo.iml
