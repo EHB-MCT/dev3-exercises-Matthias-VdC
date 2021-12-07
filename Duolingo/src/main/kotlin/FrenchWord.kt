@@ -1,14 +1,14 @@
 open class FrenchWord {
     open var words = mutableListOf<Word>(
-        Word("Bonjour", "Hallo", "French"),
-        Word("Au revoir", "Tot ziens", "French"),
-        Word("Oui", "Ja", "French"),
-        Word("Non", "Nee", "French"),
-        Word("Merci", "Bedankt", "French"),
-        Word("Chat", "Kat", "French"),
-        Word("Chien", "Hond", "French"),
-        Word("Bonne nuit", "Welterusten", "French"),
-        Word("Monde", "Wereld", "French"),
-        Word("Raison", "Redenen", "French")
+        Word("Bonjour", "Hallo", "French", 1),
+        Word("Au revoir", "Tot ziens", "French", 2),
+        Word("Oui", "Ja", "French", 1),
+        Word("Non", "Nee", "French", 1),
+        Word("Merci", "Bedankt", "French", 1),
+        Word("Chat", "Kat", "French", 1),
+        Word("Chien", "Hond", "French", 1),
+        Word("Bonne nuit", "Welterusten", "French", 2),
+        Word("Monde", "Wereld", "French", 2),
+        Word("Raison", "Redenen", "French", 2)
     )
 }

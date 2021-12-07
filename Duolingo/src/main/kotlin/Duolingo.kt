@@ -9,6 +9,7 @@ open class Duolingo {
         var randomLanguage: Boolean? = null
         var t = 0
         var language = "random String"
+        var difficulty = 1
 
         println("Do you want to choose a: Difficulty or Customize your own difficulty (type `Difficulty` or `Customize`)")
         var customize = readLine()
@@ -63,19 +64,45 @@ open class Duolingo {
             exitProcess(1)
         }
 
-        words = words.shuffled().take(t).toMutableList()
-
         var count = t
 
+        words = words.shuffled().take(20).toMutableList()
+
         for (i in 0 until t) {
-            println("$count questions left!")
-            println("translate this word to Dutch: ${words[i].original}")
-            var translate = readLine()
+            if (i == count) {
+                difficulty = words[i].difficulty
+            }
+            var easyWords = words.filter { it.difficulty == 1 }.toMutableList()
+            var difficultWords = words.filter { it.difficulty == 2 }.toMutableList()
+            var translate: String? = null
+
             if (count>0) {
-                if (translate == words[i].translate) println("Good job! On to the next question!") else {
-                    println("You were wrong! The answer was: ${words[i].translate}")
-                    wrongAnswers.add(words[i].original)
+                if(difficulty == 1) {
+                    println("$count questions left!")
+                    println("translate this word to Dutch: ${easyWords[i].original}")
+                    translate = readLine()
+                    if (translate == easyWords[i].translate){
+                        println("Good job! On to the next question!")
+                        difficulty = 2
+                    } else {
+                        println("You were wrong! The answer was: ${easyWords[i].translate}")
+                        wrongAnswers.add(easyWords[i].original)
+                        difficulty = 1
+                    }
+                }else if(difficulty == 2){
+                    println("$count questions left!")
+                    println("translate this word to Dutch: ${difficultWords[i].original}")
+                    translate = readLine()
+                    if (translate == difficultWords[i].translate){
+                        println("Good job! On to the next question!")
+                        difficulty = 2
+                    } else {
+                        println("You were wrong! The answer was: ${difficultWords[i].translate}")
+                        wrongAnswers.add(difficultWords[i].original)
+                        difficulty = 1
+                    }
                 }
+
             }
             count--
         }
