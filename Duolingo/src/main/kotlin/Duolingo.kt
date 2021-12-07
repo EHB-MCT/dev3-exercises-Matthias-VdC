@@ -23,19 +23,30 @@ open class Duolingo {
         Word("Reason", "Redenen", "English"),
     )
     fun play() {
-        println("How many questions do you want? (1-10 or type 0 to ignore")
-        var questionNr = readLine()!!.toInt()
-        println("What language do you want to practice? (French, English)")
-        var language = readLine()!!
-        var count = questionNr
-        if(questionNr == 0){
-            count = 5
-            questionNr = 5
-        }
-        words = words.filter{it.language == language}.toMutableList()
-        words = words.shuffled().take(questionNr).toMutableList()
+        println("What difficulty do you want? (Easy / Hard)")
+        var questionNr = readLine()
+        var t = 0
+        var randomLanguage = false
 
-        for (i in 0 until questionNr) {
+        if(questionNr == "Easy" || questionNr == "easy"){
+            t = 3
+        } else if(questionNr == "Hard" || questionNr == "hard"){
+            t = 6
+            randomLanguage = true
+        }
+        var count = t
+        if (!randomLanguage) {
+            println("What language do you want to practice? (French, English)")
+            var language = readLine()!!
+            if(t == 0){
+            count = 5
+            t = 5
+        }
+            words = words.filter { it.language == language }.toMutableList()
+        }
+        words = words.shuffled().take(t).toMutableList()
+
+        for (i in 0 until t) {
             println("$count questions left!")
             println("translate this word to Dutch: ${words[i].original}")
             var translate = readLine()
