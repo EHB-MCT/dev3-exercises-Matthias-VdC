@@ -1,3 +1,4 @@
+import java.lang.Exception
 import kotlin.system.exitProcess
 
 open class Duolingo {
@@ -13,39 +14,52 @@ open class Duolingo {
         var customize = readLine()
 
         if (customize == "Difficulty" || customize == "difficulty") {
-            println("What difficulty do you want? (Easy / Hard)")
-            var questionNr = readLine()
+        try {
+                println("What difficulty do you want? (Easy / Hard)")
+                var questionNr = readLine()
 
-            if (questionNr == "Easy" || questionNr == "easy") {
-                t = 3
-                randomLanguage = false
-                println("What language do you want to practice? (French, English)")
-                language = readLine()!!
-            } else if (questionNr == "Hard" || questionNr == "hard") {
-                t = 6
-                randomLanguage = true
-            }
+                if (questionNr == "Easy" || questionNr == "easy") {
+                    t = 3
+                    randomLanguage = false
+                    println("What language do you want to practice? (French, English)")
+                    language = readLine()!!
+                } else if (questionNr == "Hard" || questionNr == "hard") {
+                    t = 6
+                    randomLanguage = true
+                }
+
+        } catch(e: Exception){
+            println("You have responded with an invalid answer")
+        }
+
         } else if(customize == "Customize" || customize == "customize"){
+            try {
             println("What language do you want to practice? (French, English)")
             language = readLine()!!
             println("Please type in how many questions you want:")
             t = readLine()!!.toInt()
             randomLanguage = false
+            }catch (e:Exception){
+                println("You have responded with an invalid answer")
+                exitProcess(1)
+            }
         }
 
-        if (!randomLanguage!!) {
-            if (language == "French" || language == "french"){
+        try {
+            if (!randomLanguage!!) {
+                if (language == "French" || language == "french"){
+                    words = FrenchWord().words
+                }
+                if (language == "English" || language == "english"){
+                    words = EnglishWord().words
+                }
+            }else if(randomLanguage!!){
                 words = FrenchWord().words
+                words += EnglishWord().words
             }
-            if (language == "English" || language == "english"){
-                words = EnglishWord().words
-            }
-        }else if(randomLanguage!!){
-            words = FrenchWord().words
-            words += EnglishWord().words
         }
-        else{
-            println("Please type in a valid response!")
+        catch(e:Exception){
+            println("You have responded with an invalid answer")
             exitProcess(1)
         }
 
